@@ -12,10 +12,14 @@ namespace Marketplace.Domain
                     nameof(amount));
         }
 
-        internal Price(decimal amount, string currencyCode) : base(amount, new CurrencyDetails { CurrencyCode = currencyCode })
+        internal Price(decimal amount, string currencyCode) : base(amount, new CurrencyDetails
         {
-        }
+            CurrencyCode =
+                    currencyCode
+        })
+        { }
 
-        public static Price FromDecimal(decimal amount, string currency, ICurrencyLookup currencyLookup) => new Price(amount, currency, currencyLookup);
+        public static Price FromDecimal(decimal amount, string currency, ICurrencyLookup currencyLookup) =>
+            new Price(amount, currency, currencyLookup);
     }
 }

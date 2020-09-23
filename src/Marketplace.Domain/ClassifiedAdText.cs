@@ -1,24 +1,17 @@
-﻿using System;
-using Marketplace.Framework;
+﻿using Marketplace.Framework;
 
 namespace Marketplace.Domain
 {
     public class ClassifiedAdText : Value<ClassifiedAdText>
     {
-        public static ClassifiedAdText FromString(string text) => new ClassifiedAdText(text);
+        public string Value { get; }
 
-        private readonly string _value;
+        internal ClassifiedAdText(string text) => Value = text;
 
-        private ClassifiedAdText(string value)
-        {
-            if (value.Length > 1000)
-                throw new ArgumentOutOfRangeException(
-                    nameof(value),
-                    "Text cannot be longer that 1000 characters");
+        public static ClassifiedAdText FromString(string text)
+            => new ClassifiedAdText(text);
 
-            _value = value;
-        }
-
-        public static implicit operator String(ClassifiedAdText self) => self._value;
+        public static implicit operator string(ClassifiedAdText text)
+            => text.Value;
     }
 }
