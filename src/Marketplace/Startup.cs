@@ -1,3 +1,4 @@
+using Marketplace.Api;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -28,6 +29,10 @@ namespace Marketplace
                     Title = "ClassifiedAds",
                     Description = "OpenAPI description for ClassifiedAds",
                 }));
+
+
+            // DI :
+            services.AddSingleton(new ClassifiedAdsApplicationService());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
